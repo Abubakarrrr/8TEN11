@@ -17,7 +17,7 @@ export default function AvatarDropdown() {
       console.error(error);
     }
   };
-  const dashboardLink = user?.role === "admin" ? "/admin" : "/user";
+  const dashboardLink = user?.role === "teacher" ? "/teacher" : "/user";
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

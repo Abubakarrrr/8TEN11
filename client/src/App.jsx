@@ -11,9 +11,10 @@ import EmailVerify from "./components/Forms/EmailVerify";
 import UserProfile from "./components/Forms/UserProfile";
 import LoginWithGoogle from "./components/Forms/LoginWithGoogle";
 import Subscription from "./pages/Subscription";
-import Listing from "./pages/listing/Listing";
 import TeacherLayout from "./components/layout/AdminLayout";
 import UploadCource from "./components/dashboard/teacher/UploadCourse";
+import CourseListingPage from "./pages/listing/CourseListingPage";
+import CourseDetailsPage from "./pages/listing/CourseDetailsPage";
 
 function App() {
   const location = useLocation();
@@ -35,8 +36,9 @@ function App() {
         <Route path="/login-with-google" element={<LoginWithGoogle />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/subscription" element={<Subscription />} />
-        <Route path="/listing" element={<Listing />} />
-        <Route path="/course/:id" element={<Listing />} />
+        <Route path="/listing" element={<CourseListingPage />} />
+        <Route path="/course/:id" element={<CourseDetailsPage />} />
+        {/* <Route path="/course/:id" element={<Listing />} /> */}
 
       
 
