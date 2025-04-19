@@ -9,13 +9,11 @@ import ForgotPassword from "./components/Forms/ForgotPassword";
 import ResetPassword from "./components/Forms/ResetPassowrd";
 import EmailVerify from "./components/Forms/EmailVerify";
 import UserProfile from "./components/Forms/UserProfile";
-// import AdminProtectedRoute from "./lib/AdminProtectedRoute";
-import AdminLayout from "./components/layout/AdminLayout";
-import UserManagement from "./components/dashboard/admin/UserManagement";
 import LoginWithGoogle from "./components/Forms/LoginWithGoogle";
 import Subscription from "./pages/Subscription";
 import Listing from "./pages/listing/Listing";
 import TeacherLayout from "./components/layout/AdminLayout";
+import UploadCource from "./components/dashboard/teacher/UploadCourse";
 
 function App() {
   const location = useLocation();
@@ -44,7 +42,7 @@ function App() {
 
         {/* teacher  */}
         <Route path="/teacher" element={<TeacherLayout />}>
-          {/* <Route path="users" element={<UserManagement />} /> */}
+          <Route path="upload-course" element={<UploadCource />} />
         </Route>
 
         <Route path="/*" element={<PageNotFound />} />
