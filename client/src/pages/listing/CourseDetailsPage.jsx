@@ -119,18 +119,15 @@ const CourseDetailsPage = () => {
           <p className="text-indigo-100 mb-6 max-w-3xl">{course.description}</p>
 
           <div className="flex flex-wrap items-center gap-6 mb-6">
-            <div className="flex items-center">
-              <Star className="h-5 w-5 text-yellow-400 fill-yellow-400 mr-1" />
-              <span>{course.rating} Rating</span>
-            </div>
+          
             <div className="flex items-center">
               <Users className="h-5 w-5 mr-1" />
               <span>{course.totalStudents.toLocaleString()} Students</span>
             </div>
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <Clock className="h-5 w-5 mr-1" />
               <span>{course.totalHours} Hours</span>
-            </div>
+            </div> */}
             <div className="flex items-center">
               <BookOpen className="h-5 w-5 mr-1" />
               <span>{course.videos.length} Lessons</span>
@@ -139,7 +136,7 @@ const CourseDetailsPage = () => {
 
           <div className="flex items-center">
             <img
-              src={course.tutorAvatar || "/placeholder.svg"}
+              src={course.teacher.avatar || "/placeholder.svg"}
               alt={course.tutorName}
               className="w-12 h-12 rounded-full mr-3 border-2 border-white"
             />
@@ -170,7 +167,7 @@ const CourseDetailsPage = () => {
 
             {/* Transcript and Summary */}
             <div className="mb-8">
-              <TranscriptSummary transcript={selectedVideo.transcript} summary={selectedVideo.summary} />
+              <TranscriptSummary transcript={selectedVideo.transcript} />
             </div>
 
             {/* Tutor Info */}

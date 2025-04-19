@@ -47,10 +47,7 @@ const CourseCard = ({ course }) => {
             />
             <span className="text-sm text-gray-700">{course.tutorName}</span>
           </div>
-          <div className="flex items-center">
-            <Star className="h-4 w-4 text-yellow-400 fill-yellow-400 mr-1" />
-            <span className="text-sm text-gray-700">{course.rating}</span>
-          </div>
+        
         </div>
       </div>
     </div>
