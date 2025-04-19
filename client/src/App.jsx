@@ -11,7 +11,6 @@ import EmailVerify from "./components/Forms/EmailVerify";
 import UserProfile from "./components/Forms/UserProfile";
 // import AdminProtectedRoute from "./lib/AdminProtectedRoute";
 import AdminLayout from "./components/layout/AdminLayout";
-import UserManagement from "./components/dashboard/admin/UserManagement";
 import LoginWithGoogle from "./components/Forms/LoginWithGoogle";
 import Subscription from "./pages/Subscription";
 import Listing from "./pages/listing/Listing";
@@ -44,7 +43,7 @@ function App() {
 
         {/* teacher  */}
         <Route path="/teacher" element={<TeacherLayout />}>
-          {/* <Route path="users" element={<UserManagement />} /> */}
+          <Route path="uploadcourse" element={<UploadCourse />} />
         </Route>
 
         <Route path="/*" element={<PageNotFound />} />
