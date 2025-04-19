@@ -193,7 +193,7 @@ const CourseDetailsPage = () => {
           {/* Sidebar */}
           <div>
             {/* Course Price Card */}
-            <div className="bg-white rounded-lg shadow-md border border-gray-100 p-6 mb-8 sticky top-4">
+            <div className="bg-white rounded-lg shadow-md border border-gray-100 p-6 mb-8">
               <div className="text-3xl font-bold text-gray-900 mb-4">${course.price}</div>
               <button className="w-full py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors mb-4">
                 Enroll Now
