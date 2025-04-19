@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import { v2 as cloudinary } from "cloudinary";
-
+import { sendEmail } from "../utils/sendEmail.js";
 // import { User } from "../models/userModel.js";
 import generateTokenAndSetCookie from "../utils/generateTokenAndSetCookie.js";
 import User from "../models/userModel.js";
@@ -12,7 +12,7 @@ cloudinary.config({
 });
 
 export const signup = async (req, res) => {
-  const { email, password, name } = req.body;
+  const { email, password, name, role } = req.body;
   try {
     if (!email || !password || !name) {
       throw new Error("All fields are required");
@@ -29,10 +29,11 @@ export const signup = async (req, res) => {
     const verificationToken = Math.floor(
       100000 + Math.random() * 900000
     ).toString();
-    const user = new userModel({
+    const user = new User({
       email,
       password: hashedPassword,
       name,
+      role,
       verificationToken,
       verificationExpiresAt: Date.now() + 24 * 3600 * 1000,
     });
@@ -40,12 +41,12 @@ export const signup = async (req, res) => {
     await user.save();
     // Send welcome email
     const message = `<p>Welcome <strong>${user.name}</strong>,</p>
-        <p>Thank you for signing up as a <strong>${role}</strong> on <strong>Telehealth</strong>!</p>
+        <p>Thank you for signing up as a <strong>${role}</strong> on <strong>Edtech</strong>!</p>
         <p>Your account was created on ${user.created_at.toLocaleDateString()} at ${user.created_at.toLocaleTimeString()}.</p>
-        <p>Best regards,<br><strong>Telehealth Team</strong></p>
+        <p>Best regards,<br><strong>Edtech Team</strong></p>
         <p>Verification token,<br><strong>${verificationToken}</strong></p>`;
 
-    await sendEmail(user.email, `Welcome to Telehealth, ${user.name}`, message);
+    await sendEmail(user.email, `Welcome to Edtech, ${user.name}`, message);
 
     // jwt
     generateTokenAndSetCookie(res, user._id);

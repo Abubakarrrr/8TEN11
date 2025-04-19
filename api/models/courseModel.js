@@ -8,6 +8,8 @@ const courseSchema = new Schema(
     thumbnailUrl: { type: String },
     teacher: { type: Types.ObjectId, ref: "User", required: true },
     isPremium: { type: Boolean, default: false },
+    countStudents: { type: Number, default: 0 },
+    lessons: { type: Number, default: 0 },
     price: { type: Number, default: 0 },
   },
   { timestamps: true }

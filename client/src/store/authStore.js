@@ -18,13 +18,14 @@ export const useAuthStore = create((set) => ({
     set({ user });
   },
 
-  signup: async (email, name, password) => {
+  signup: async (email, name, password, role) => {
     set({ isLoading: true, error: null });
     try {
       const response = await axios.post(`${API_URL}/signup`, {
         email,
         password,
         name,
+        role,
       });
       set({
         user: response?.data?.user,
@@ -63,6 +64,7 @@ export const useAuthStore = create((set) => ({
         email,
         password,
       });
+      console.log(response);
       set({ user: response.data.user, isAthenticated: true, isLoading: false });
     } catch (error) {
       set({
@@ -152,8 +154,6 @@ export const useAuthStore = create((set) => ({
     }
   },
 
-
-  
   // ADMIN APIs
   // sudo_createUser: async (FormData) => {
   //   set({ isLoading: true, error: null });
@@ -213,7 +213,4 @@ export const useAuthStore = create((set) => ({
   //     throw error;
   //   }
   // },
-
-
-
 }));

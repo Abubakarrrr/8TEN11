@@ -48,13 +48,10 @@ const signupSchema = Joi.object({
       "string.pattern.base":
         "Password must contain at least one uppercase letter, one lowercase letter, and one number",
     }),
-  role: Joi.string()
-    .valid("user", "teacher")
-    .required()
-    .messages({
-      "any.only": "Role must be either 'user' or 'teacher'",
-      "string.empty": "Role is required",
-    }),
+  role: Joi.string().valid("user", "teacher").required().messages({
+    "any.only": "Role must be either 'user' or 'teacher'",
+    "string.empty": "Role is required",
+  }),
 });
 
 export default function SignUp() {
@@ -88,7 +85,7 @@ export default function SignUp() {
         if (error) {
           toast(error);
         } else {
-          navigate("/");
+          navigate("/verify-email");
         }
       }
     } catch (error) {
@@ -195,8 +192,6 @@ export default function SignUp() {
                         onChange={handleChange}
                       />
                       <ErrorMessage message={errors.password} />
-
-                    
 
                       <Button
                         className="mt-3 col-span-2"
