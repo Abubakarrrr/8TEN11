@@ -118,3 +118,47 @@
     @apply bg-background text-foreground;
   }
 }
+
+.toggle-container {
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+.toggle-checkbox {
+  display: none;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: grey;
+  transition: background-color 0.3s;
+  border-radius: 25px;
+}
+
+.toggle-slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: transform 0.3s;
+  border-radius: 50%;
+}
+
+.toggle-checkbox:checked + .toggle-slider {
+  background-color: #4ade80;
+}
+
+.toggle-checkbox:checked + .toggle-slider::before {
+  transform: translateX(25px);
+}
