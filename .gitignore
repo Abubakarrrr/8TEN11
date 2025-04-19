@@ -1,0 +1,44 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node.js dependencies
+node_modules/
+client/node_modules/
+api/node_modules/
+
+# Build artifacts and TypeScript outputs
+dist/
+api/dist/
+client/dist/
+client/dist-ssr/
+api/build/  # If using another build directory
+*.tsbuildinfo  # TypeScript incremental build info
+
+# Local environment and secrets
+*.local
+.env
+.env.local
+.env.*.local
+client/.env
+api/.env
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+client/.vscode/
+api/.vscode/
+.idea/
+client/.idea/
+api/.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
