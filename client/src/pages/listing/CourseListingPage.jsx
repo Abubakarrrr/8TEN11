@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import CourseCard from "./CourseCard"
-import { Search, Filter } from "lucide-react"
+import { useState, useEffect } from "react";
+import CourseCard from "./CourseCard";
+import { Search, Filter } from "lucide-react";
+import axios from "axios";
 
 // Mock data for courses
 const mockCourses = [
@@ -35,7 +36,8 @@ const mockCourses = [
   {
     id: 3,
     title: "Digital Marketing Essentials",
-    description: "Master the core concepts of digital marketing including SEO, social media, and content strategy.",
+    description:
+      "Master the core concepts of digital marketing including SEO, social media, and content strategy.",
     thumbnail: "/placeholder.svg?height=200&width=400",
     price: 39.99,
     tutorName: "Emily Wong",
@@ -47,7 +49,8 @@ const mockCourses = [
   {
     id: 4,
     title: "Financial Accounting Principles",
-    description: "Understand the fundamentals of financial accounting and learn to analyze financial statements.",
+    description:
+      "Understand the fundamentals of financial accounting and learn to analyze financial statements.",
     thumbnail: "/placeholder.svg?height=200&width=400",
     price: 44.99,
     tutorName: "James Rodriguez",
@@ -59,7 +62,8 @@ const mockCourses = [
   {
     id: 5,
     title: "Advanced Python Programming",
-    description: "Take your Python skills to the next level with advanced concepts, data structures, and algorithms.",
+    description:
+      "Take your Python skills to the next level with advanced concepts, data structures, and algorithms.",
     thumbnail: "/placeholder.svg?height=200&width=400",
     price: 54.99,
     tutorName: "Aisha Patel",
@@ -71,7 +75,8 @@ const mockCourses = [
   {
     id: 6,
     title: "UX/UI Design Fundamentals",
-    description: "Learn the principles of user experience and interface design to create intuitive digital products.",
+    description:
+      "Learn the principles of user experience and interface design to create intuitive digital products.",
     thumbnail: "/placeholder.svg?height=200&width=400",
     price: 49.99,
     tutorName: "David Okafor",
@@ -80,36 +85,54 @@ const mockCourses = [
     featured: false,
     category: "Design",
   },
-]
+];
 
 const CourseListingPage = () => {
-  const [courses, setCourses] = useState([])
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [courses, setCourses] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   // Categories derived from course data
-  const categories = ["All", ...new Set(mockCourses.map((course) => course.category))]
+  const categories = [
+    "All",
+    ...new Set(mockCourses.map((course) => course.category)),
+  ];
 
   useEffect(() => {
     // In a real app, you would fetch courses from an API
-    setCourses(mockCourses)
-  }, [])
+    setCourses(mockCourses);
+  }, []);
 
   // Filter courses based on search term and category
   const filteredCourses = courses.filter((course) => {
     const matchesSearch =
       course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.description.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === "All" || course.category === selectedCategory
+      course.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "All" || course.category === selectedCategory;
 
-    return matchesSearch && matchesCategory
-  })
+    return matchesSearch && matchesCategory;
+  });
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/course")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   return (
     <div className="bg-gray-50 min-h-screen py-12">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Explore Courses</h1>
-        <p className="text-gray-600 mb-8">Discover courses from top educators and expand your knowledge</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          Explore Courses
+        </h1>
+        <p className="text-gray-600 mb-8">
+          Discover courses from top educators and expand your knowledge
+        </p>
 
         {/* Search and Filter */}
         <div className="flex flex-col md:flex-row gap-4 mb-8">
@@ -155,7 +178,12 @@ const CourseListingPage = () => {
         {filteredCourses.length === 0 && (
           <div className="text-center py-12">
             <div className="text-gray-400 mb-4">
-              <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg
+                className="mx-auto h-12 w-12"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -164,13 +192,18 @@ const CourseListingPage = () => {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-medium text-gray-900">No courses found</h3>
-            <p className="mt-1 text-gray-500">Try adjusting your search or filter to find what you're looking for.</p>
+            <h3 className="text-lg font-medium text-gray-900">
+              No courses found
+            </h3>
+            <p className="mt-1 text-gray-500">
+              Try adjusting your search or filter to find what you're looking
+              for.
+            </p>
           </div>
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CourseListingPage
+export default CourseListingPage;

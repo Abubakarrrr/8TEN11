@@ -11,6 +11,21 @@ const enrollmentSchema = new Schema(
   },
   { timestamps: true }
 );
+enrollmentSchema.pre("save", async function (next) {
+  if (this.isNew) {
+    await mongoose.model("Course").findByIdAndUpdate(this.course, {
+      $inc: { countStudents: 1 },
+    });
+  }
+  next();
+});
 
+// Optional: handle removal (e.g., student drops course)
+enrollmentSchema.pre("remove", async function (next) {
+  await mongoose.model("Course").findByIdAndUpdate(this.course, {
+    $inc: { countStudents: -1 },
+  });
+  next();
+});
 const Enrollment = model("Enrollment", enrollmentSchema);
 export default Enrollment;
