@@ -9,11 +9,6 @@ import ForgotPassword from "./components/Forms/ForgotPassword";
 import ResetPassword from "./components/Forms/ResetPassowrd";
 import EmailVerify from "./components/Forms/EmailVerify";
 import UserProfile from "./components/Forms/UserProfile";
-<<<<<<< HEAD
-// import AdminProtectedRoute from "./lib/AdminProtectedRoute";
-import AdminLayout from "./components/layout/AdminLayout";
-=======
->>>>>>> 8560c726d105e8dd843195e3ff59c5529bc43ad5
 import LoginWithGoogle from "./components/Forms/LoginWithGoogle";
 import Subscription from "./pages/Subscription";
 import Listing from "./pages/listing/Listing";
@@ -47,11 +42,7 @@ function App() {
 
         {/* teacher  */}
         <Route path="/teacher" element={<TeacherLayout />}>
-<<<<<<< HEAD
-          <Route path="uploadcourse" element={<UploadCourse />} />
-=======
           <Route path="upload-course" element={<UploadCource />} />
->>>>>>> 8560c726d105e8dd843195e3ff59c5529bc43ad5
         </Route>
 
         <Route path="/*" element={<PageNotFound />} />
