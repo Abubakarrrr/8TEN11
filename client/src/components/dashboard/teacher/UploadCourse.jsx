@@ -87,9 +87,82 @@ const UploadCource = () => {
               <Input {...register("price")} type="number" placeholder="Price" />
             </div>
           </div>
+          <div className="md:w-[45%] w-full flex flex-col gap-5 p-4">
+            <div className="mb-6 max-w-[500px]">
+              <label className="font font-semibold">Thumbnail</label>
+              <div
+                className="flex flex-col items-center justify-center align-middle border-dashed border-2 border-light_gray rounded-md p-6 pt-9 pb-9 text-center cursor-pointer hover:bg-gray-100"
+                onClick={() =>
+                  document.getElementById("thumbInput")?.click()
+                }
+              >
+                <img
+                  src="/create-cource/upload2.png"
+                  alt={""}
+                  width={30}
+                  height={30}
+                />
+                <p className="text-text_secondary mt-4">
+                  Click or drag file to this area to upload
+                </p>
+                <input
+                  type="file"
+                  id="thumbInput"
+                  accept="png/jpg"
+                  className="hidden"
+                  {...register("thumbNail")}
+                />
+              </div>
+              <span
+                style={{ fontSize: 14 }}
+                className="font-normal text-[#9D9D9D] mt-1"
+              >
+                Formats accepted are png/jpg.
+              </span>
+            </div>
+            <div className="mb-6 max-w-[500px]">
+              <label className="font font-semibold">Video</label>
+              <div
+                className="flex flex-col items-center justify-center align-middle border-dashed border-2 border-light_gray rounded-md p-6 pt-9 pb-9 text-center cursor-pointer hover:bg-gray-100"
+                onClick={() =>
+                  document.getElementById("videoUploadInput")?.click()
+                }
+              >
+                <img
+                  src="/create-cource/upload2.png"
+                  alt={""}
+                  width={30}
+                  height={30}
+                />
+                <p className="text-text_secondary mt-4">
+                  Click or drag file to this area to upload
+                </p>
+                <input
+                  type="file"
+                  id="videoUploadInput"
+                  accept="video/mp4"
+                  multiple
+                  className="hidden"
+                  {...register("video")}
+                />
+              </div>
+              <span
+                style={{ fontSize: 14 }}
+                className="font-normal text-[#9D9D9D] mt-1"
+              >
+                Formats accepted is mp4.
+              </span>
+            </div>
+
+          </div>
         </div>
 
-        <button className="mt-5 px-5 py-2 rounded-lg bg-black text-white font-semibold cursor-pointer" type="submit">Create Course</button>
+        <button
+          className="mt-5 px-5 py-2 rounded-lg bg-black text-white font-semibold cursor-pointer"
+          type="submit"
+        >
+          Create Course
+        </button>
       </form>
     </div>
   );
