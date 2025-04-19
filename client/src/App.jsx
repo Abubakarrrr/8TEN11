@@ -15,6 +15,7 @@ import TeacherLayout from "./components/layout/AdminLayout";
 import UploadCource from "./components/dashboard/teacher/UploadCourse";
 import CourseListingPage from "./pages/listing/CourseListingPage";
 import CourseDetailsPage from "./pages/listing/CourseDetailsPage";
+import CourseProgressCard from "./components/dashboard/student/CourseProgressCard";
 
 function App() {
   const location = useLocation();
@@ -46,6 +47,13 @@ function App() {
         <Route path="/teacher" element={<TeacherLayout />}>
           <Route path="upload-course" element={<UploadCource />} />
         </Route>
+
+        
+        {/* student  */}
+        <Route path="/student" element={<TeacherLayout />}>
+          <Route path="course" element={<CourseProgressCard />} />
+        </Route>
+
 
         <Route path="/*" element={<PageNotFound />} />
       </Routes>

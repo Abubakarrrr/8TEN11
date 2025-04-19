@@ -136,7 +136,7 @@ const CourseDetailsPage = () => {
 
           <div className="flex items-center">
             <img
-              src={course.teacher.avatar || "/placeholder.svg"}
+              src={course.teacher || "/placeholder.svg"}
               alt={course.tutorName}
               className="w-12 h-12 rounded-full mr-3 border-2 border-white"
             />
