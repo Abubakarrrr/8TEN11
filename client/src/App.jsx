@@ -15,6 +15,7 @@ import UserManagement from "./components/dashboard/admin/UserManagement";
 import LoginWithGoogle from "./components/Forms/LoginWithGoogle";
 import Subscription from "./pages/Subscription";
 import Listing from "./pages/listing/Listing";
+import TeacherLayout from "./components/layout/AdminLayout";
 
 function App() {
   const location = useLocation();
@@ -39,20 +40,10 @@ function App() {
         <Route path="/listing" element={<Listing />} />
         <Route path="/course/:id" element={<Listing />} />
 
-        {/* admin routes  */}
-        <Route
-          path="/admin"
-          element={
-            // <AdminProtectedRoute>
-            <AdminLayout />
-            // </AdminProtectedRoute>
-          }
-        >
-          <Route path="users" element={<UserManagement />} />
-        </Route>
+      
 
         {/* teacher  */}
-        <Route path="/teacher" element={<AdminLayout />}>
+        <Route path="/teacher" element={<TeacherLayout />}>
           {/* <Route path="users" element={<UserManagement />} /> */}
         </Route>
 

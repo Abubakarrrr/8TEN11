@@ -26,7 +26,7 @@ import AvatarDropdown from "@/components/shared/AvatarDropdown";
 
 
 
-export default function AdminLayout() {
+export default function TeacherLayout() {
     const location = useLocation();
     const pathSegment = location.pathname.split("/")[2];
     const breadcrumbLabel = pathSegment
@@ -40,7 +40,7 @@ export default function AdminLayout() {
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link to="/" className="flex items-center gap-2 font-semibold">
               <Package2 className="h-6 w-6" />
-              <span className="">EatWise</span>
+              <span className="">EdTech</span>
             </Link>
             <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
               <Bell className="h-4 w-4" />
@@ -56,26 +56,20 @@ export default function AdminLayout() {
                 <Home className="h-4 w-4" />
                 Home
               </Link>
+             
               <Link
-                to="/admin/users"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <Users className="h-4 w-4" />
-                Users
-              </Link>
-              <Link
-                to="/admin/listing"
+                to="/teacher/listing"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Package className="h-4 w-4" />
-                Listing
+                Courses
                 {/* <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                   6
                 </Badge> */}
               </Link>
             
               <Link
-                to="/admin/subscription"
+                to="/teacher/subscription"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <List className="h-4 w-4" />
@@ -83,7 +77,7 @@ export default function AdminLayout() {
               </Link>
 
               <Link
-                to="/admin/analytics"
+                to="/teacher/analytics"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <LineChart className="h-4 w-4" />
@@ -113,24 +107,18 @@ export default function AdminLayout() {
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
                   <Package2 className="h-6 w-6" />
-                  <span className="sr-only">FCIT connect</span>
+                  <span className="sr-only">Edtech</span>
                 </Link>
                 <Link
-                  to="/admin/dashboard"
+                  to="/teacher/dashboard"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
                   <Home className="h-5 w-5" />
                   Dashboard
                 </Link>
+              
                 <Link
-                  to="/admin/users"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Users className="h-5 w-5" />
-                  Users
-                </Link>
-                <Link
-                  to="/admin/fyps"
+                  to="/teacher/fyps"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
                 >
                   <Package className="h-5 w-5" />
@@ -142,14 +130,14 @@ export default function AdminLayout() {
               
              
                 <Link
-                  to="/admin/categories"
+                  to="/teacher/categories"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
                   <List className="h-4 w-4" />
                   Categories
                 </Link>
                 <Link
-                  to="/admin/analytics"
+                  to="/teacher/analytics"
                   className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
                   <LineChart className="h-5 w-5" />
@@ -164,7 +152,7 @@ export default function AdminLayout() {
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link to="#">Admin</Link>
+                  <Link to="#">Teacher</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
